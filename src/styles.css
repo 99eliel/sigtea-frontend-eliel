@@ -8,6 +8,8 @@
   --surface: #ffffff;
   --bg: #f4f7fb;
   --danger: #b42318;
+  --success: #027a48;
+  --success-bg: #ecfdf3;
   --warning-bg: #fff7dc;
   --warning-text: #8a5a00;
 }
@@ -24,7 +26,8 @@ body {
 }
 
 button,
-input {
+input,
+select {
   font: inherit;
 }
 
@@ -88,7 +91,8 @@ button {
 }
 
 .login-card input,
-.patient-form input {
+.patient-form input,
+.patient-form select {
   width: 100%;
   border: 1px solid #d7deea;
   border-radius: 12px;
@@ -99,7 +103,8 @@ button {
 }
 
 .login-card input:focus,
-.patient-form input:focus {
+.patient-form input:focus,
+.patient-form select:focus {
   border-color: var(--blue);
   box-shadow: 0 0 0 3px rgba(36, 84, 214, 0.12);
 }
@@ -197,7 +202,7 @@ button {
 }
 
 .page {
-  max-width: 1120px;
+  max-width: 1180px;
   margin: 0 auto;
 }
 
@@ -299,10 +304,34 @@ button {
   margin: 0 0 18px;
 }
 
+.spec-card {
+  background: #f8fbff;
+}
+
+.spec-card strong {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.spec-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 16px;
+}
+
+.form-grid-patient {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.span-2 {
+  grid-column: span 2;
 }
 
 .form-error {
@@ -343,6 +372,12 @@ button {
   color: var(--blue);
 }
 
+.action-group {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
 .section-title {
   display: flex;
   align-items: center;
@@ -363,6 +398,7 @@ button {
 .patients-table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 960px;
 }
 
 .patients-table th,
@@ -376,6 +412,26 @@ button {
   color: var(--muted);
   font-size: 13px;
   text-transform: uppercase;
+}
+
+.status-pill {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 900;
+  background: #eef4ff;
+  color: var(--blue);
+}
+
+.status-pill.diagnosticado {
+  background: var(--success-bg);
+  color: var(--success);
+}
+
+.status-pill.suspeita {
+  background: var(--warning-bg);
+  color: var(--warning-text);
 }
 
 .empty-state {
@@ -406,8 +462,13 @@ button {
   }
 
   .cards-grid,
-  .form-grid {
+  .form-grid,
+  .form-grid-patient {
     grid-template-columns: 1fr;
+  }
+
+  .span-2 {
+    grid-column: span 1;
   }
 
   .page-header,

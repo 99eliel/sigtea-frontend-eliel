@@ -7,6 +7,23 @@ function formatarData(data) {
   return `${dia}/${mes}/${ano}`;
 }
 
+function formatarStatus(status) {
+  const nomes = {
+    DIAGNOSTICADO: 'Diagnosticado',
+    SUSPEITA: 'Suspeita',
+  };
+
+  return nomes[status] || '-';
+}
+
+function formatarNivel(nivel) {
+  if (!nivel) {
+    return 'Não informado';
+  }
+
+  return `Nível ${nivel}`;
+}
+
 function PatientList({ patients }) {
   if (patients.length === 0) {
     return (
@@ -23,8 +40,11 @@ function PatientList({ patients }) {
           <tr>
             <th>Nome</th>
             <th>CPF</th>
-            <th>Data de nascimento</th>
-            <th>Criado em</th>
+            <th>Nascimento</th>
+            <th>Status clínico</th>
+            <th>Nível</th>
+            <th>CNS</th>
+            <th>Responsável</th>
           </tr>
         </thead>
 
@@ -34,7 +54,14 @@ function PatientList({ patients }) {
               <td>{patient.nome}</td>
               <td>{patient.cpf}</td>
               <td>{formatarData(patient.dataNascimento)}</td>
-              <td>{new Date(patient.criadoEm).toLocaleDateString('pt-BR')}</td>
+              <td>
+                <span className={`status-pill ${patient.statusClinico?.toLowerCase()}`}>
+                  {formatarStatus(patient.statusClinico)}
+                </span>
+              </td>
+              <td>{formatarNivel(patient.nivelSuporte)}</td>
+              <td>{patient.numCns || '-'}</td>
+              <td>{patient.nomeResponsavel || '-'}</td>
             </tr>
           ))}
         </tbody>

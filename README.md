@@ -15,6 +15,31 @@ Frontend inicial em React para o projeto SIGTEA, criado para a nova etapa do Squ
 - Validação de campos obrigatórios
 - Mock de salvamento usando `localStorage`
 - Lista de pacientes cadastrados
+- Campos alinhados à especificação técnica de pacientes
+
+## Aderência à especificação do professor
+
+A tela `/pacientes` foi ajustada com base na ETF do Squad 1 para o módulo de pacientes.
+
+A especificação define a tabela `pacientes` com os campos principais:
+
+- `nome_completo`
+- `cpf`
+- `data_nascimento`
+- `num_cns`
+- `status_clinico`
+- `nivel_suporte`
+- `nome_responsavel`
+
+Também foram consideradas as regras:
+
+- CPF obrigatório com 11 números
+- CPF sem duplicidade no mock local
+- Data de nascimento obrigatória
+- Data de nascimento não pode ser futura
+- Status clínico limitado a `DIAGNOSTICADO` ou `SUSPEITA`
+- Nível de suporte opcional, limitado a 1, 2 ou 3
+- CNS opcional, mas com 15 números quando informado
 
 ## Como rodar o projeto
 
@@ -67,6 +92,10 @@ A tela `/pacientes` permite cadastrar pacientes com:
 - Nome completo
 - CPF
 - Data de nascimento
+- Status clínico
+- Nível de suporte
+- CNS
+- Nome do responsável
 
 O CPF recebe máscara automaticamente no formato:
 
@@ -89,4 +118,4 @@ POST /api/patients
 
 ## Resumo para apresentação
 
-Minha entrega foi a criação inicial do frontend em React, com rotas principais, layout base e tela de cadastro de pacientes. A tela já valida os campos obrigatórios, aplica máscara visual no CPF e simula o salvamento/listagem dos pacientes com mock local.
+Minha entrega foi a criação inicial do frontend em React, com rotas principais, layout base e tela de cadastro de pacientes. A tela foi ajustada para seguir a especificação técnica do módulo de pacientes, incluindo campos obrigatórios, máscara de CPF, validação de data futura, status clínico, nível de suporte, CNS e responsável. O salvamento e a listagem ainda usam mock local com `localStorage`, permitindo simular o fluxo até a integração com a API real.
